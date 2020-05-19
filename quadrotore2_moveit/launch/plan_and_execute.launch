@@ -4,11 +4,14 @@
  # and the current state of the world as seen by the planner
  <include file="$(find quadrotore2_moveit)/launch/move_group.launch">
   <arg name="publish_monitored_planning_scene" value="true" />
+  <arg name="fake_execution" value="false"/>
  </include>
+
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
     <param name="/use_gui" value="false"/> 
     <rosparam param="/source_list">[/move_group/fake_controller_joint_states]</rosparam>
   </node>
+
  # The visualization component of MoveIt!
  <include file="$(find quadrotore2_moveit)/launch/moveit_rviz.launch"/>
 </launch>
