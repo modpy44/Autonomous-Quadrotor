@@ -1,0 +1,11 @@
+quad:
+  hardware_interface:
+     loop_hz: 10 # hz
+     joints:
+       - sonar_joint
+       - camera_joint
+       - camera_depth_joint
+       - camera_depth_optical_joint
+       - camera_rgb_joint
+       - camera_rgb_optical_joint
+       

@@ -13,6 +13,12 @@
      <arg name="use_ground_truth_for_tf" value="$(arg use_ground_truth_for_tf)" />
    </include>
 
+<!--<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor_with_kinect.launch">    
+      <arg name="use_ground_truth_for_tf" value="$(arg use_ground_truth_for_tf)" />
+      <arg name="x" value="0" />
+      <arg name="yaw" value="3.14"/>
+    </include> -->
+
 	 <!--<node pkg="action_controller" type="action_controller" name="action_controller" respawn="true"/>-->
 
  </launch>

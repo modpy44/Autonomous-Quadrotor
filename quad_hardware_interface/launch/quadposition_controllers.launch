@@ -1,0 +1,19 @@
+<launch>
+
+  <!-- GDB functionality -->
+  <arg name="debug" default="false" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+  <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
+  <arg name="robot_name" default="quad"/>
+
+  <rosparam file="$(find quad_hardware_interface)/config/hardware.yaml" command="load"/>
+  <rosparam file="$(find quad_hardware_interface)/config/controllers.yaml" command="load"/>
+	<param name="robot_description" command="cat $(find hector_quadrotor_urdf)/urdf/quadrotore.urdf" />
+
+  <!--<node name="quad_hardware_interface" pkg="quad_hardware_interface" type="quad_hardware_interface_node" output="screen" launch-prefix="$(arg launch_prefix)"/>-->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/"
+		args="
+			/quad/controller/state
+		"/>
+
+</launch>

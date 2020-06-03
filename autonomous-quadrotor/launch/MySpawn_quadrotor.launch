@@ -6,7 +6,7 @@
    <arg name="model" default="$(find hector_quadrotor_urdf)/urdf/quadrotor.urdf.xacro"/>
    <!-- send the robot XML to param server -->
    <param name="robot_description" command="cat '$(arg model)'" />
-   
+    
    <!-- push robot_description to factory and spawn robot in gazebo -->
    <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model"
    args="-param robot_description
@@ -20,6 +20,15 @@
      <param name="publish_frequency" type="double" value="50.0" />
       
    </node>
+
+    <rosparam file="$(find quad_hardware_interface)/config/hardware.yaml" command="load"/>
+    <rosparam file="$(find quad_hardware_interface)/config/controllers.yaml" command="load"/>
+
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/"
+		args="
+			/quad/controller/state
+                       /quad/controller/joint1_position_controller
+		"/>
 
    <arg name="use_ground_truth_for_tf" default="true" />
    <node name="ground_truth_to_tf" pkg="message_to_tf" type="message_to_tf" output="screen">

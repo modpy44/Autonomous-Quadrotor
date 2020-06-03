@@ -21,9 +21,9 @@
   </include>
 
   <include ns="move_group" file="$(find quadrotore2_moveit)/launch/trajectory_execution.launch" if="$(arg allow_trajectory_execution)">
-    <arg name="moveit_controller_manager" value="quadrotor" unless="$(arg fake_execution)"/>
-    <arg name="moveit_controller_manager" value="fake" if="$(arg fake_execution)"/> 
     <arg name="moveit_manage_controllers" value="true" />
+    <arg name="moveit_controller_manager" value="quadrotor" unless="$(arg fake_execution)"/>
+    <arg name="moveit_controller_manager" value="fake" if="$(arg fake_execution)"/>
   </include>
 
   <include ns="move_group" file="$(find quadrotore2_moveit)/launch/sensor_manager.launch" if="$(arg allow_trajectory_execution)">
@@ -37,7 +37,6 @@
     <param name="allow_trajectory_execution" value="$(arg allow_trajectory_execution)"/>
     <param name="max_safe_path_cost" value="$(arg max_safe_path_cost)"/>
     <param name="jiggle_fraction" value="$(arg jiggle_fraction)" />
-
     <!-- MoveGroup capabilities to load -->
     <param name="capabilities" value="move_group/MoveGroupCartesianPathService
 				      move_group/MoveGroupExecuteTrajectoryAction
