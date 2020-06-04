@@ -6,9 +6,11 @@
 <robot name="quadrotor" xmlns:xacro="http://ros.org/wiki/xacro">
   <!-- Included URDF Files -->
   <!-- Instantiate quadrotor_base_macro once (has no parameters atm) -->
+   
 
-<!--<joint name="fake_joint" type="floating">
+  <!--<joint name="fake_joint" type="floating">
     <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+    <parent link="world"/>
     <child link="base_link"/>
   </joint>-->
 
@@ -149,8 +151,12 @@
       <updateRate>1000.0</updateRate>
     </plugin>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-    <robotParam>robot_description</robotParam>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
     </plugin>
+    <!--<plugin name="joint_state_publisher"
+     filename="libgazebo_ros_joint_state_publisher.so">
+    <jointName>sonar_joint ,camera_joint, camera_depth_joint, camera_depth_optical_joint, camera_rgb_joint,camera_rgb_optical_joint</jointName>
+    </plugin>-->
   </gazebo>
   <gazebo>
 		<plugin filename="libhector_gazebo_quadrotor_simple_controller.so" name="quadrotor_simple_controller">

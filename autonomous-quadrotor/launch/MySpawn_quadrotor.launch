@@ -16,12 +16,12 @@
      respawn="false" output="screen"/>
      
    <!-- start robot state publisher -->
-   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen" >
+   <!--<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen" >
      <param name="publish_frequency" type="double" value="50.0" />
       
-   </node>
+   </node>-->
 
-    <rosparam file="$(find quad_hardware_interface)/config/hardware.yaml" command="load"/>
+    <!--<rosparam file="$(find quad_hardware_interface)/config/hardware.yaml" command="load"/>-->
     <rosparam file="$(find quad_hardware_interface)/config/controllers.yaml" command="load"/>
 
 <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/"
