@@ -1,4 +1,4 @@
-This project is an adaptation of [this](https://github.com/AlessioTonioni/Autonomous-Flight-ROS) work to the ROS melodic enviroment.\
+This project is an adaptation of [this](https://github.com/AlessioTonioni/Autonomous-Flight-ROS) work to ROS melodic enviroment.\
 To run the example 
 ```
 roslaunch autonomous_quadrotor mySpawn_quadrotor_with_kinect.launch
